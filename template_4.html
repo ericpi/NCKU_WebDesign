@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+var left=["黑桃", "紅心", "方塊", "梅花"];
+for(var i=0; i<4; ++i)
+	for(var j=1; j<=13; ++j){
+		var tmp=j;
+		if(j==1) tmp='A';
+		else if(j==11) tmp='J';
+		else if(j==12) tmp='Q';
+		else if(j==13) tmp='K';
+		console.log(left[i]+tmp);
+	}
+    </script>
+    </body>
+</html>
