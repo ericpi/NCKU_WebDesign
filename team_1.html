@@ -16,12 +16,25 @@
 		for(var i0 = 1; i0 <= 13; i0++)
 			for(var i1 = 0; i1 < 4; i1++)
 				pokeAll.push(newCard(i0, POKECHINESS[i1]));
-		pokeAll.forEach(printCard);
+		washCards(pokeAll, 100).forEach(printCard);
 		function newCard(num, color){
 			return {"num":num, "color":color};
 		}
 		function printCard(card){
-			console.log(card["num"] + card["color"]);
+			console.log((card["num"] == 11 ? 'J' :
+						 card["num"] == 12 ? 'Q' :
+						 card["num"] == 13 ? 'K' :
+						 card["num"] == 1  ? 'A' : card["num"]) +
+					     card["color"]);
+		}
+		function washCards(cards, washTime){
+		    for(var i0 = 0, cardTemp, len = cards.length; i0 < washTime; i0++){
+				var choosed = Math.round(Math.random() * (len - 1) ) ; 
+				cardTemp = cards[0];
+				cards[0] = cards[choosed];
+				cards[choosed] = cardTemp;
+			}
+			return cards;
 		}
     </script>
     </body>
