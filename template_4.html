@@ -12,20 +12,21 @@
     <script type="text/javascript">
 var left=["黑桃", "紅心", "方塊", "梅花"];
 var all = new Array(52);
-for(var i=0; i<52; ++i) all[i]=false;
-var ran=Math.floor((Math.random() * 52));
-var haha=0;
-while(haha<52){
-	ran=Math.floor((Math.random() * 52));
-	if(all[ran]) continue;
-	all[ran]=true;
-	var j= ran % 13;
-		if(j==1) tmp='A';
-		else if(j==11) tmp='J';
-		else if(j==12) tmp='Q';
-		else if(j==13) tmp='K';
-	console.log(left[Math.floor(ran/13)]+j);
-	++haha;
+for(var i=0; i<52; ++i) all[i]=i;
+for(var i=0; i<52; ++i){
+	var ranA=Math.floor((Math.random() * 52));
+	var ranB=Math.floor((Math.random() * 52));
+	var tmp=all[ranA];
+	all[ranA]=all[ranB];
+	all[ranB]=tmp;
+}
+for(var i=0; i<52; ++i){
+	var j= all[i] % 13 +1;
+		if(j==1) j='A';
+		else if(j==11) j ='J';
+		else if(j==12) j ='Q';
+		else if(j==13) j ='K';
+	console.log(left[Math.floor(all[i]/13)]+j);
 }
 
     </script>
