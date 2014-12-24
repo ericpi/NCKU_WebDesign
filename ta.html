@@ -12,23 +12,10 @@
     <script type="text/javascript">
       // write your code here
       var type = ["黑桃", "愛心", "方塊", "梅花"];
-      for(t in type) {
-        for(var i = 1; i <= 13; i++) {
-          if(11 == i) {
-            console.log(type[t] + "J");
-          }
-          else if(12 == i) {
-            console.log(type[t] + "Q");
-          }
-          else if(13 == i) {
-            console.log(type[t] + "K");
-          }
-          else if(1 == i) {
-            console.log(type[t] + "A");
-          }
-          else {
-            console.log(type[t] + i.toString());
-          }
+      var num = ["A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
+      for(i in type) {
+        for(j in num) {
+            console.log(type[i] + num[j]);
         }
       }
     </script>
