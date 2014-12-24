@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+// write your code here
+	var count=52; 
+	var originalArray=new Array;//原數組 
+	//给原數組originalArray賦值 
+
+	var poke =[];
+	var  index=0;
+for(var i= 0; i<4; i++){
+    for(var j=0; j<13; j++){
+        if(i==0)
+            str="黑桃";
+        if(i==1)
+            str="紅心";
+        if(i==2)
+            str="方塊";
+        if(i==3)
+            str="梅花";
+        
+        if(j==0)
+            poke[index++]=str+"A";
+        else if(j==10)
+            poke[index++]=str+"J";
+        else if(j==11)
+            poke[index++]=str+"Q";
+        else if(j==12)
+            poke[index++]=str+"K";
+        else 
+            poke[index++]=str+(j+1);
+		}
+   }
+	
+	
+	
+	for (var i=0;i<count;i++){ 
+		originalArray[i]=i+1; 
+	} 
+	originalArray.sort(function(){ return 0.5 - Math.random(); }); 
+	for(var q=0;q<52; q++)
+		console.log(poke[originalArray[q]-1]);
+	
+
+    </script>
+    </body>
+</html>
