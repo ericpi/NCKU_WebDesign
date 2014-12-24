@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+// write your code here
+
+var str;
+for(var i= 0; i<4; i++){
+    for(var j=0; j<13; j++){
+        if(i==0)
+            str="黑桃";
+        if(i==1)
+            str="紅心";
+        if(i==2)
+            str="方塊";
+        if(i==3)
+            str="梅花";
+        
+        if(j==0)
+            console.log(str+"A");
+        else if(j==10)
+            console.log(str+"J");
+        else if(j==11)
+            console.log(str+"Q");
+        else if(j==12)
+            console.log(str+"K");
+        else 
+            console.log(str+(j+1));
+    }
+    
+}
+    </script>
+    </body>
+</html>
