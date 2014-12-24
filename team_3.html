@@ -10,23 +10,43 @@
     <body>
 
     <script type="text/javascript">
-// write your code here
-var suit = [ "梅花","方塊","紅心","黑桃"];
-//var i=0,j=0;
-for(i=0;i<4;i++)
-  for(j=1;j<=13;j++){
-      num = j;
-      if(j == 1)
-        num = "A";
-      else if( j == 11)
-        num ="J";
-      else if(j==12)
-        num ="Q";
-      else if(j==13)
-        num = "K";
-      
-          console.log(""+suit[i]+num);
+    // write your code here
+    var suit = [ "梅花","方塊","紅心","黑桃"];
+    var cards = [ ];
+
+    for(i=0;i<4;i++)
+        for(j=1;j<=13;j++){
+            num = j;
+            if(j == 1)
+                num = "A";
+            else if( j == 11)
+                num ="J";
+            else if(j == 12)
+                num ="Q";
+            else if(j == 13)
+                num = "K";
+
+            cards.push(""+suit[i]+num);
       }
+
+      Shuffle(cards);
+
+      function Shuffle(cards){
+          for(i=0;i<52;i++){
+                index = Math.floor(Math.random()*52);
+                Swap(cards,i,index);
+            }
+      }
+
+      function Swap(cards,c1,c2){
+          tempCard = cards[c1];
+          cards[c1] = cards[c2];
+          cards[c2] = tempCard;
+      }
+
+      for(i=0;i<52;i++)
+        console.log(cards[i]);
+
     </script>
     </body>
 </html>
