@@ -15,9 +15,37 @@
 		// write your code here
 			var cards = new Array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
 			var kinds = new Array("黑桃", "紅心", "方塊", "梅花");
-			for(i=0; i<kinds.length; i++)
-				for(j=0; j<cards.length; j++)
-					document.write(kinds[i]+cards[j]+"<br>");
+			var poker = new Array();
+			var count = 0;
+			for(i=0; i<kinds.length; i++){
+				for(j=0; j<cards.length; j++){
+					//console.log(kinds[i]+cards[j]+"\n");
+					poker[count] = kinds[i]+cards[j];
+					count++;
+				}
+			}
+			/*for(i=0; i<poker.length; i++)
+				console.log(poker[i]+"\n");*/
+			var num = poker.length;
+			//document.write(num);
+			var temp, rand;
+			var newpoker = new Array();
+			for(i=0; i<52; i++){
+				rand = Math.floor((Math.random() * num));
+				temp = poker[rand];
+				//document.write(rand+"<br>");
+				poker[rand] = poker[poker.length-1];
+				poker[poker.length-1] = temp;
+				newpoker[i] = temp;
+				//document.write(newpoker[i]);
+				
+				poker.pop();
+				num--;
+			}
+			
+			for(i=0; i<newpoker.length; i++)
+				console.log(i+":"+newpoker[i]+"\n");
+				
 		</script>
 	</body>
 </html>
