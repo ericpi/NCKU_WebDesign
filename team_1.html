@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+// write your code here
+		var pokeAll = new Array();
+		var POKECHINESS = ["p","f","h","s"];
+		for(var i0 = 1; i0 <= 13; i0++)
+			for(var i1 = 0; i1 < 4; i1++)
+				pokeAll.push(newCard(i0, POKECHINESS[i1]));
+		pokeAll.forEach(printCard);
+		function newCard(num, color){
+			return {"num":num, "color":color};
+		}
+		function printCard(card){
+			console.log(card["num"] + card["color"]);
+		}
+    </script>
+    </body>
+</html>
