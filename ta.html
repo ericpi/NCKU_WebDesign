@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
+  <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    <body>
+  </head>
+  <body>
 
     <script type="text/javascript">
       // write your code here
@@ -16,12 +16,17 @@
       var num = ["A", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"];
       for(i in type) {
         for(j in num) {
-            heap.push((type[i] + num[j]));
+          heap.push((type[i] + num[j]));
         }
       }
-
-             
+      for (var i = heap.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = heap[i];
+        heap[i] = heap[j];
+        heap[j] = temp;
+      }
+      console.log(heap);
 
     </script>
-    </body>
+  </body>
 </html>
