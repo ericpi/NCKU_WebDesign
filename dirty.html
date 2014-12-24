@@ -10,12 +10,16 @@
     <body>
 
     <script type="text/javascript">
-      suit = ['黑桃','紅心','方塊','梅花'];
-      number = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];
-      for (i in suit) {
-      	for (j in number) {
-	  console.log(suit[i]+number[j]);
-	}
+      suits = ['黑桃','紅心','方塊','梅花'];
+      numbers = ['A',2,3,4,5,6,7,8,9,10,'J','Q','K'];
+      deck = [];
+      for ( i = 0; i < 52; ++i ) deck[i] = i;
+      for ( i = 52; i; --i ) {
+	card = deck[Math.floor(Math.random() * i)];
+	suit = Math.floor(card / 13);
+	number = card % 13;
+        console.log(suits[suit]+numbers[number]);
+	deck[card] = i
       }
     </script>
     </body>
