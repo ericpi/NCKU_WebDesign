@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+      // write your code here
+      var type = ["黑桃", "愛心", "方塊", "梅花"];
+      for(t in type) {
+        for(var i = 1; i <= 13; i++) {
+          if(11 == i) {
+            console.log(type[t] + "J");
+          }
+          else if(12 == i) {
+            console.log(type[t] + "Q");
+          }
+          else if(13 == i) {
+            console.log(type[t] + "K");
+          }
+          else if(1 == i) {
+            console.log(type[t] + "A");
+          }
+          else {
+            console.log(type[t] + i.toString());
+          }
+        }
+      }
+    </script>
+    </body>
+</html>
