@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+
+    <script type="text/javascript">
+var left=["黑桃", "紅心", "方塊", "梅花"];
+var all = new Array(52);
+var Users=["User 1","User 2","User 3","User 4"];
+Shuffle();
+BlackJack();
+
+function BlackJack(){
+	var Card=0;
+	for(var user in Users){
+		var Point1=all[Card]%13+1, Point2=all[Card+1]%13+1;
+		if(Point1>10) Point1=10;
+		if(Point2>10) Point2=10;
+		if(Point1==1 && Point2+11<22) Point1=11;
+		if(Point2==1 && Point2+11<22) Point2=11;
+		console.log(Users[user]+": ["+Turn(all[Card])+", "+Turn(all[Card+1])+"] "+(Point1+Point2)+"點");
+		Card+=2;
+	}
+}
+
+function Turn(n){
+	var j= n % 13 +1;
+	if(j==1) j='A';
+	else if(j==11) j ='J';
+	else if(j==12) j ='Q';
+	else if(j==13) j ='K';
+	return left[Math.floor(n/13)]+j;
+}
+
+function Shuffle(){
+	for(var i=0; i<52; ++i) all[i]=i;
+	for(var i=0; i<52; ++i){
+		var ranA=Math.floor((Math.random() * 52));
+		var ranB=Math.floor((Math.random() * 52));
+		var tmp=all[ranA];
+		all[ranA]=all[ranB];
+		all[ranB]=tmp;
+	}
+}
+
+    </script>
+    </body>
+</html>
