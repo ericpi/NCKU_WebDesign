@@ -10,42 +10,50 @@
     <body>
 
     <script type="text/javascript">
-var left=["黑桃", "紅心", "方塊", "梅花"];
-var all = new Array(52);
+var suits=["黑桃", "紅心", "方塊", "梅花"];
+var cards = new Array(52);
+for(var i=0; i<52; ++i) cards[i]=i;
 var Users=["User 1","User 2","User 3","User 4"];
 Shuffle();
-BlackJack();
+BlackJack( Math.floor((Math.random() * 52)) );
 
-function BlackJack(){
-	var Card=0;
+/* start blackjack, deal the cards from Num */
+function BlackJack(Num){
 	for(var user in Users){
-		var Point1=all[Card]%13+1, Point2=all[Card+1]%13+1;
+		if(Num>50) Num=0;
+		var Point1=cards[Num]%13+1, Point2=cards[Num+1]%13+1;
 		if(Point1>10) Point1=10;
 		if(Point2>10) Point2=10;
 		if(Point1==1 && Point2+11<22) Point1=11;
 		if(Point2==1 && Point2+11<22) Point2=11;
-		console.log(Users[user]+": ["+Turn(all[Card])+", "+Turn(all[Card+1])+"] "+(Point1+Point2)+"點");
-		Card+=2;
+		console.log(
+			Users[user]+": ["+
+			Turn(cards[Num])+", "+
+			Turn(cards[Num+1])+"] "+
+			(Point1+Point2)+"點"
+		);
+		Num+=2;
 	}
 }
 
+/* return the chinese name of the card */
 function Turn(n){
 	var j= n % 13 +1;
 	if(j==1) j='A';
 	else if(j==11) j ='J';
 	else if(j==12) j ='Q';
 	else if(j==13) j ='K';
-	return left[Math.floor(n/13)]+j;
+	return suits[Math.floor(n/13)]+j;
 }
 
+/* shuffle the cards!! */
 function Shuffle(){
-	for(var i=0; i<52; ++i) all[i]=i;
 	for(var i=0; i<52; ++i){
 		var ranA=Math.floor((Math.random() * 52));
 		var ranB=Math.floor((Math.random() * 52));
-		var tmp=all[ranA];
-		all[ranA]=all[ranB];
-		all[ranB]=tmp;
+		var tmp=cards[ranA];
+		cards[ranA]=cards[ranB];
+		cards[ranB]=tmp;
 	}
 }
 
