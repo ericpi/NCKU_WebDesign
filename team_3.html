@@ -44,9 +44,34 @@
           cards[c2] = tempCard;
       }
 
-      for(i=0;i<52;i++)
-        console.log(cards[i]);
+      for( player = 1 ; player <= 4 ; player++ ){
+        Deal(cards,player);
+      }
 
+      function Deal(cards,player){
+        point = 0;
+        index = Math.floor(Math.random()*cards.length);     //get the first card's index
+        len = cards[index].length;
+        card1_p = getPoint(cards[index]);
+        card1 = cards.splice(index,1);                      //remove this card from the deck
+
+        index = Math.floor(Math.random()*cards.length);     //get the second card's index
+        len = cards[index].length;
+        card2_p = getPoint(cards[index]);                   //remove this card from the deck
+        card2 = cards.splice(index,1);
+        console.log("User "+player+": ["+card1+", "+card2+"]  "+(card1_p+card2_p)+" 點");
+      }
+
+      function getPoint(card){
+        len = card.length;
+        num = cards[index].substring(2,len);
+        if( "A" == num)
+          return 11;
+        else if( "J" == num || "Q" == num || "K" == num)
+          return 10;
+        else
+          return parseInt(num);
+      }
     </script>
     </body>
 </html>
