@@ -11,12 +11,38 @@
 
     <script type="text/javascript">
         var a=["黑桃","梅花","方片","红桃"];
-        var b=[1,2,3,4,5,6,7,8,9,"J","Q","K"];
-        for(i in a)
+        var b=["A",2,3,4,5,6,7,8,9,10,"J","Q","K"];
+        var c=[];
+        for(i=1;i<=52;i++)
         {
-            for(j in b)
-            console.log(a[i],b[j]);
+            c.push(i);
         }
+    for(i=1;i<=26;i++){
+        num=Math.round(Math.random()*100);
+        while(num>=53){
+            num=Math.round(num/2);
+        }
+        temp=c[i];
+        c[i]=num;
+        c[num]=temp;
+        }
+            console.log(c);
+           for(i in c)
+           {
+               if(c[i]<14){
+                   console.log(a[0],b[c[i]]);
+               }
+               else if(c[i]<27 && c[i]>13){
+                   console.log(a[1],b[c[i]-14]);
+               }
+               else if(c[i]<40 && c[i]>26){
+                   console.log(a[2],b[c[i]-27]);
+               }
+               else{
+                   console.log(a[3],b[c[i]-40]);
+               }
+           }
+
     </script>
     </body>
 </html>
