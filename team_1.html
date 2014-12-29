@@ -10,31 +10,83 @@
     <body>
 
     <script type="text/javascript">
-// write your code here
-		var pokeAll = new Array();
-		var POKECHINESS = ["p","f","h","s"];
-		for(var i0 = 1; i0 <= 13; i0++)
-			for(var i1 = 0; i1 < 4; i1++)
-				pokeAll.push(newCard(i0, POKECHINESS[i1]));
-		washCards(pokeAll, 100).forEach(printCard);
-		function newCard(num, color){
-			return {"num":num, "color":color};
+		Gamestart();
+		
+		
+		
+		
+		function Gamestart(){
+			gameData = setNewGame(4,2);
+			showPlayerInfo_testStyle(gameData);
 		}
-		function printCard(card){
-			console.log((card["num"] == 11 ? 'J' :
-						 card["num"] == 12 ? 'Q' :
-						 card["num"] == 13 ? 'K' :
-						 card["num"] == 1  ? 'A' : card["num"]) +
-					     card["color"]);
-		}
-		function washCards(cards, washTime){
-		    for(var i0 = 0, cardTemp, len = cards.length; i0 < washTime; i0++){
-				var choosed = Math.round(Math.random() * (len - 1) ) ; 
-				cardTemp = cards[0];
-				cards[0] = cards[choosed];
-				cards[choosed] = cardTemp;
+		function setNewGame(playerNum, initCardsNum){
+			var players = new Array();
+			var ready_cards = generateNewCardDeck(100);
+			for(var i0 = 0; i0 < playerNum; i0++){
+				players.push({name: i0+1, 
+				              cards: drawFromCards(ready_cards, initCardsNum)
+							  });
 			}
-			return cards;
+			return {players:players};
+		}
+		function showPlayerInfo_testStyle(gameData){
+			if(gameData.players.length > 0)
+				for(var i0 = 0; i0 < gameData.players.length; i0++){
+					var cardsinfo = getCardInfo_String(gameData.players[i0].cards[0]),
+  					      bjTotal = getBlackJackNumber(gameData.players[i0].cards[0]);
+					for(var i1 = 1; i1 < gameData.players[i0].cards.length; i1++){
+						cardsinfo += ", " + getCardInfo_String(gameData.players[i0].cards[i1]);
+						bjTotal += getBlackJackNumber(gameData.players[i0].cards[i1]);
+					}
+					console.log("User "+gameData.players[i0].name+": ["+cardsinfo+"] "+bjTotal+"點");
+				}
+		}
+				function getCardInfo_String(card){
+					return    	   (card["color"] == "p" ? "黑桃" :
+									card["color"] == "f" ? "菱形" :
+									card["color"] == "h" ? "紅心" :
+									card["color"] == "s" ? "梅花" : "none")
+									+" "+
+								   (card["num"] == 11 ? 'J' :
+									card["num"] == 12 ? 'Q' :
+									card["num"] == 13 ? 'K' :
+									card["num"] == 1  ? 'A' : card["num"])
+									;
+					}
+					function getBlackJackNumber(card){
+						return (card["num"] == 1 ? 11 :
+								card["num"] > 10 ? 10 : card["num"]);
+					}
+
+				
+		
+		function generateNewCardDeck(washTimes){
+			var POKECHINESS = ["p","f","h","s"];	
+			var newPokeAll = new Array();
+			for(var i0 = 1; i0 <= 13; i0++)
+				for(var i1 = 0; i1 < 4; i1++)
+					newPokeAll.push(newCard(i0, POKECHINESS[i1]));
+			return washCards(newPokeAll, washTimes);
+		}	
+				function newCard(num, color){
+					return {"num":num, "color":color};
+				}
+				function washCards(cards, washTimes){
+					for(var i0 = 0, cardTemp, len = cards.length; i0 < washTimes; i0++){
+						var choosed = Math.round(Math.random() * (len - 1) ) ; 
+						cardTemp = cards[0];
+						cards[0] = cards[choosed];
+						cards[choosed] = cardTemp;
+					}
+					return cards;
+				}	
+		function drawFromCards(cards, times){
+			if(cards.length < times)
+				return false;
+			var temp_card = new Array();
+			for(var i0 = 0; i0 < times; i0++)
+				temp_card.push(cards.shift());
+			return temp_card;
 		}
     </script>
     </body>
